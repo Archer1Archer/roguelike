@@ -18,3 +18,8 @@ class Thing:
 
     def clear(self):
         libtcod.console_put_char(self.con, self.x, self.y, ' ', libtcod.BKGND_NONE)
+
+class Timer(Thing):
+    def __init__(self, x, y, char, color, con):
+        super(Timer, self).__init__(x, y, char, color, con)
+

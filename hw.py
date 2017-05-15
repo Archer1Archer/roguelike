@@ -78,8 +78,14 @@ objects = [npc, player]
 
 make_map()
 
+timer = 0
+
 # Main game loop
 while not libtcod.console_is_window_closed():
+	timer += 1
+
+	libtcod.console_put_char(con, 0, 0, str(timer), libtcod.BKGND_DEFAULT)
+
 	render_all()
 
 	libtcod.console_flush()
