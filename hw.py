@@ -74,17 +74,19 @@ libtcod.sys_set_fps(LIMIT_FPS)
 # Set up initial objects
 player = Object.Thing(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, '@', libtcod.white, con)
 npc = Object.Thing(SCREEN_WIDTH / 2 + 5, SCREEN_HEIGHT / 2, '@', libtcod.dark_yellow, con)
-objects = [npc, player]
+flower = Object.Plant(SCREEN_WIDTH/2 - 5, SCREEN_HEIGHT / 2, '1', libtcod.yellow, con)
+objects = [npc, player, flower]
 
 make_map()
 
+global timer
 timer = 0
 
 # Main game loop
 while not libtcod.console_is_window_closed():
 	timer += 1
-
-	libtcod.console_put_char(con, 0, 0, str(timer), libtcod.BKGND_DEFAULT)
+	if timer == 10: flower.grow('2')
+	# libtcod.console_put_char(con, 0, 0, str(timer), libtcod.BKGND_DEFAULT)
 
 	render_all()
 

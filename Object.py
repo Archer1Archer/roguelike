@@ -1,6 +1,6 @@
 import libtcodpy as libtcod
 
-class Thing:
+class Thing(object):
     def __init__(self, x, y, char, color, con):
         self.x = x
         self.y = y
@@ -19,7 +19,9 @@ class Thing:
     def clear(self):
         libtcod.console_put_char(self.con, self.x, self.y, ' ', libtcod.BKGND_NONE)
 
-class Timer(Thing):
+class Plant(Thing):
     def __init__(self, x, y, char, color, con):
-        super(Timer, self).__init__(x, y, char, color, con)
+        Thing.__init__(self, x, y, char, color, con)
 
+    def grow(self, c):
+        self.char = c
